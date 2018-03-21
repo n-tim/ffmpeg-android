@@ -23,15 +23,15 @@ make clean
 --enable-runtime-cpudetect \
 --sysroot="$NDK_SYSROOT" \
 --enable-pic \
---enable-libx264 \
---enable-libass \
---enable-libfreetype \
---enable-libfribidi \
---enable-libmp3lame \
---enable-fontconfig \
 --enable-pthreads \
 --disable-debug \
 --disable-ffserver \
+--disable-ffmpeg \
+--disable-network \
+--disable-avdevice \
+--disable-postproc \
+--disable-programs \
+--disable-asm \
 --enable-version3 \
 --enable-hardcoded-tables \
 --disable-ffplay \
@@ -45,7 +45,7 @@ make clean
 --prefix="${2}/build/${1}" \
 --extra-cflags="-I${TOOLCHAIN_PREFIX}/include $CFLAGS" \
 --extra-ldflags="-L${TOOLCHAIN_PREFIX}/lib $LDFLAGS" \
---extra-libs="-lpng -lexpat -lm" \
+--extra-libs="-lexpat" \
 --extra-cxxflags="$CXX_FLAGS" || exit 1
 
 make -j${NUMBER_OF_CORES} && make install || exit 1
